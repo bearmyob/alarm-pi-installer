@@ -1,0 +1,360 @@
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0a0a0f 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(157, 78, 221, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(0, 245, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Title Bar */
+.title-bar {
+  height: 40px;
+  background: linear-gradient(90deg, #1a1a2e, #12121a);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  -webkit-app-region: drag;
+  border-bottom: 1px solid #9d4edd44;
+}
+
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #00f5ff;
+  text-shadow: 0 0 10px #00f5ff88;
+  letter-spacing: 2px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 8px;
+  -webkit-app-region: no-drag;
+}
+
+.window-controls button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: #ffffff11;
+  color: #888;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.window-controls button:hover {
+  background: #9d4edd44;
+  color: #fff;
+}
+
+.window-controls button:last-child:hover {
+  background: #ff006e44;
+}
+
+/* Main Container */
+.main-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 200px 1fr 300px;
+  gap: 16px;
+  padding: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Steps Panel */
+.steps-panel {
+  background: linear-gradient(180deg, #12121a 0%, #0a0a0f 100%);
+  border: 1px solid #9d4edd44;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+}
+
+.step.active {
+  background: linear-gradient(90deg, #9d4edd22, transparent);
+  border-color: #9d4edd;
+  box-shadow: 0 0 20px #9d4edd44;
+}
+
+.step.complete {
+  opacity: 0.6;
+}
+
+.step.complete .step-num {
+  color: #39ff14;
+}
+
+.step-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  color: #9d4edd;
+}
+
+.step-name {
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* Content Panel */
+.content-panel {
+  background: linear-gradient(180deg, #12121a 0%, #0a0a0f 100%);
+  border: 1px solid #00f5ff44;
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-content {
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.cyber-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  color: #00f5ff;
+  text-shadow: 0 0 20px #00f5ff66;
+  margin-bottom: 32px;
+  letter-spacing: 3px;
+}
+
+
+/* Input Group */
+.input-group {
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-size: 12px;
+  color: #9d4edd;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+.cyber-input {
+  width: 100%;
+  padding: 16px 20px;
+  background: #0a0a0f;
+  border: 2px solid #9d4edd44;
+  border-radius: 6px;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.cyber-input:focus {
+  border-color: #00f5ff;
+  box-shadow: 0 0 20px #00f5ff44;
+}
+
+.cyber-input::placeholder {
+  color: #666;
+}
+
+/* Buttons */
+.cyber-button {
+  padding: 16px 32px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border: 2px solid;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-button.primary {
+  background: linear-gradient(135deg, #9d4edd22, #9d4edd44);
+  border-color: #9d4edd;
+  color: #fff;
+}
+
+.cyber-button.primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #9d4edd44, #9d4edd66);
+  box-shadow: 0 0 30px #9d4edd66;
+  transform: translateY(-2px);
+}
+
+.cyber-button.danger {
+  background: linear-gradient(135deg, #ff006e22, #ff006e44);
+  border-color: #ff006e;
+  color: #fff;
+}
+
+.cyber-button.danger:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ff006e44, #ff006e66);
+  box-shadow: 0 0 30px #ff006e66;
+  transform: translateY(-2px);
+}
+
+.cyber-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Option Grid */
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.option-btn {
+  padding: 20px;
+  background: #0a0a0f;
+  border: 2px solid #ffffff22;
+  border-radius: 6px;
+  color: #aaa;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.option-btn:hover {
+  border-color: #00f5ff;
+  color: #fff;
+  box-shadow: 0 0 20px #00f5ff22;
+}
+
+.option-btn.selected {
+  background: linear-gradient(135deg, #00f5ff11, #00f5ff22);
+  border-color: #00f5ff;
+  color: #00f5ff;
+  box-shadow: 0 0 20px #00f5ff44;
+}
+
+/* Config Summary */
+.config-summary {
+  background: #0a0a0f;
+  border: 1px solid #39ff1444;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.config-summary p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.config-summary span {
+  color: #39ff14;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+/* Console Panel */
+.console-panel {
+  background: #0a0a0f;
+  border: 1px solid #39ff1444;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.console-header {
+  padding: 12px 16px;
+  background: #39ff1422;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  color: #39ff14;
+  letter-spacing: 2px;
+}
+
+.console-output {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+}
+
+.log-line {
+  margin: 4px 0;
+  color: #39ff14aa;
+  line-height: 1.6;
+}
+
+/* Status Bar */
+.status-bar {
+  height: 32px;
+  background: #12121a;
+  border-top: 1px solid #ffffff11;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 8px;
+  font-size: 12px;
+  color: #888;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot.online {
+  background: #39ff14;
+  box-shadow: 0 0 10px #39ff14;
+}
+
+.status-dot.offline {
+  background: #ff006e;
+  box-shadow: 0 0 10px #ff006e;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px currentColor; }
+  50% { box-shadow: 0 0 40px currentColor; }
+}
