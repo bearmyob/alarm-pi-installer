@@ -1,14 +1,13 @@
 {
   "name": "alarm-pi-installer",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cyberpunk-styled Alarm Pi Installer",
-  "main": "dist-electron/main.js",
-  "type": "module",
+  "main": "dist-electron/main.cjs",
   "scripts": {
     "dev": "vite",
-    "dev:electron": "concurrently \"vite\" \"wait-on http://localhost:5173 && tsc -p electron/tsconfig.json && electron .\"",
-    "build": "tsc -b && vite build && tsc -p electron/tsconfig.json",
+    "dev:electron": "concurrently \"vite\" \"wait-on http://localhost:5173 && tsc -p electron/tsconfig.json && node scripts/rename-cjs.js && electron .\"",
+    "build": "tsc -b && vite build && tsc -p electron/tsconfig.json && node scripts/rename-cjs.js",
     "build:electron": "npm run build && electron-builder",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -41,7 +40,7 @@
     "appId": "com.promisclinics.alarm-pi-installer",
     "productName": "Alarm Pi Installer",
     "directories": {
-      "output": "build-output"
+      "output": "dist-build"
     },
     "files": [
       "dist/**/*",
