@@ -16,6 +16,7 @@ package-lock.json
 
 # Build output
 build-output
+dist-build
 release
 *.exe
 *.dmg
