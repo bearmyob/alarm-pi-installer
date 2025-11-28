@@ -1,0 +1,31 @@
+directories:
+  output: dist-build
+  buildResources: build
+appId: com.promisclinics.alarm-pi-installer
+productName: Alarm Pi Installer
+files:
+  - filter:
+      - dist/**/*
+      - dist-electron/**/*
+      - node_modules/ssh2/**/*
+asar: true
+win:
+  target:
+    - target: portable
+      arch:
+        - x64
+  icon: public/icon.png
+  signAndEditExecutable: false
+mac:
+  target:
+    - target: dmg
+      arch:
+        - x64
+        - arm64
+  icon: public/icon.png
+  category: public.app-category.utilities
+linux:
+  target:
+    - AppImage
+  icon: public/icon.png
+electronVersion: 39.2.4

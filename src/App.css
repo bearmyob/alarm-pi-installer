@@ -348,6 +348,41 @@
   box-shadow: 0 0 10px #ff006e;
 }
 
+/* Edit Mode Badge */
+.edit-badge {
+  background: linear-gradient(135deg, #f39c12, #e74c3c);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  margin-left: 12px;
+  animation: pulse 2s infinite;
+}
+
+.edit-indicator {
+  margin-left: auto;
+  color: #f39c12;
+  font-size: 12px;
+}
+
+.step-desc {
+  color: #888;
+  font-size: 12px;
+  margin-bottom: 1rem;
+}
+
+.step.complete {
+  cursor: pointer;
+}
+
+.step.complete:hover {
+  background: rgba(0, 245, 255, 0.15);
+}
+
+select.cyber-input {
+  cursor: pointer;
+}
+
 /* Animations */
 @keyframes pulse {
   0%, 100% { opacity: 1; }
